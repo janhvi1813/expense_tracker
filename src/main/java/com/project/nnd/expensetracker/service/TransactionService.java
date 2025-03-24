@@ -36,21 +36,21 @@ public class TransactionService {
     }
 
     public double extractAmount(String message) {
-        Pattern amountPattern = Pattern.compile("(?:₹?\\s*|debited by\\s*)(\\d+(\\.\\d{1,2})?)");
-        Matcher matcher = amountPattern.matcher(message);
-    
-        if (matcher.find()) {
-            return Double.parseDouble(matcher.group(1));
-        }
-        return 0.0;
+        Pattern amountPattern = Pattern.compile("(?i)(?:Rs\\.?|₹|debited by)\\s*(\\d+(\\.\\d{1,2})?)");
+    Matcher matcher = amountPattern.matcher(message);
+
+    if (matcher.find()) {
+        return Double.parseDouble(matcher.group(1));
+    }
+    return 0.0;
     }
 
     public String extractCategory(String message) {
-        String[] categories = {"Netflix", "Amazon", "Swiggy", "Zomato", "Uber", "Grocery", "Recharge"};
-        for (String category : categories) {
-            if (message.toLowerCase().contains(category.toLowerCase())) {
-                return category;
-            }
+        Pattern categoryPattern = Pattern.compile("trf to ([A-Za-z\\s]+)\\b|towards ([A-Za-z\\s]+)\\b");
+        Matcher matcher = categoryPattern.matcher(message);
+    
+        if (matcher.find()) {
+            return matcher.group(1) != null ? matcher.group(1).trim() : matcher.group(2).trim();
         }
         return "Uncategorized";
     }
