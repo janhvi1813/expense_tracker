@@ -5,10 +5,8 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Transaction {
-
     private double amount;
     private String category;
-    private String description;
 
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime timestamp;
@@ -17,11 +15,9 @@ public class Transaction {
     public Transaction() {}
 
     // Constructor
-    public Transaction(double amount, String category, String description, LocalDateTime timestamp) {
+    public Transaction(double amount, String category) {
         this.amount = amount;
         this.category = category;
-        this.description = description;
-        this.timestamp = timestamp;
     }
 
     // Getters and Setters
@@ -41,14 +37,6 @@ public class Transaction {
         this.category = category;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
@@ -62,7 +50,6 @@ public class Transaction {
         return "Transaction{" +
                 "amount=" + amount +
                 ", category='" + category + '\'' +
-                ", description='" + description + '\'' +
                 ", timestamp=" + timestamp +
                 '}';
     }
