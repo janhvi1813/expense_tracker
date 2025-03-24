@@ -36,9 +36,9 @@ public class TransactionService {
     }
 
     public double extractAmount(String message) {
-        Pattern amountPattern = Pattern.compile("₹\\s?(\\d+(\\.\\d{1,2})?)");
+        Pattern amountPattern = Pattern.compile("(?:₹?\\s*|debited by\\s*)(\\d+(\\.\\d{1,2})?)");
         Matcher matcher = amountPattern.matcher(message);
-
+    
         if (matcher.find()) {
             return Double.parseDouble(matcher.group(1));
         }
