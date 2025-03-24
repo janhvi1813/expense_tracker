@@ -9,7 +9,7 @@ public class Blockchain {
     public Blockchain() {
         chain = new ArrayList<>();
         // ✅ Create Genesis Block with a dummy transaction
-        chain.add(new Block(0, new Transaction(0.0, "Genesis", "System", null), "0"));
+        chain.add(new Block(0, new Transaction(0.0, "Genesis"), "0"));
     }
 
     // ✅ Accepts a SINGLE Transaction instead of a List<Transaction>
