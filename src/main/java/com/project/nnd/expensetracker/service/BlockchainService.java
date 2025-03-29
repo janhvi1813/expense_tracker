@@ -1,5 +1,8 @@
 package com.project.nnd.expensetracker.service;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -28,21 +31,28 @@ public class BlockchainService {
         String prevHash = blockchain.isEmpty() ? "0" : blockchain.get(blockchain.size() - 1).getHash();
         int index = blockchain.size(); // ✅ Correct index
         Block newBlock = new Block(index, transaction, prevHash); // ✅ Block creation
-
         // ✅ Add to blockchain list
         blockchain.add(newBlock);
-
         // ✅ Save in MongoDB
         blockchainRepository.save(newBlock);
-
         return newBlock;
     }
     
-    // ✅ Blockchain fetch karna
+    
     public List<Block> getBlockchain() {
         return blockchainRepository.findAll();
     }
-
+    public double getTotalAmountSpent() {
+        List<Block> blocks = blockchainRepository.findAll();
+        double totalAmount = 0;
+        for (Block block : blocks) {
+            Transaction transaction = block.getTransaction();
+            if (transaction != null) {
+                totalAmount += transaction.getAmount();
+            }
+        }
+        return totalAmount;
+    }
     public List<Map<String, Object>> getCategorizedData() {
         List<Block> blocks = blockchainRepository.findAll();
         Map<String, Double> categoryAmounts = new HashMap<>();

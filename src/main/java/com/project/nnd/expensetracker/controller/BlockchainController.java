@@ -2,6 +2,7 @@ package com.project.nnd.expensetracker.controller;
 
 import java.util.*;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,5 +51,11 @@ public class BlockchainController {
     public List<Map<String, Object>> getCategorizedData(){
         return blockchainService.getCategorizedData();
     }   
+
+    @GetMapping("/totalspent")
+    public ResponseEntity<Double> getTotalAmountSpent() {
+        double totalAmount = blockchainService.getTotalAmountSpent();
+        return ResponseEntity.ok(totalAmount);
+    }
 
 }

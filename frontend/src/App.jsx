@@ -1,13 +1,16 @@
 import React from "react";
 import DataPieChart from "./components/DataPieChart";
-import { Box, HStack } from "@chakra-ui/react";
+import { Box, HStack ,VStack} from "@chakra-ui/react";
 import DataTable from "./components/DataTable";
 import Hero from "./components/Hero";
+import Progressbar from "./components/Progressbar";
 
 const App = () => {
   return (
     <>
       <Hero />
+      <Progressbar/>
+      
       <HStack
         justifyContent={"center"}
         minHeight={"100vh"}
@@ -17,7 +20,7 @@ const App = () => {
       >
         <DataPieChart />
         <DataTable />
-      </HStack>
+        </HStack>
     </>
   );
 };
