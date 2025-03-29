@@ -29,6 +29,11 @@ const DataTable = () => {
       maxHeight="400px"
       overflowY="auto"
       width="100%"
+      mt={6} // Added margin-top
+      mb={6} // Added margin-bottom
+      p={4} // Added padding
+      borderRadius="lg"
+      boxShadow="md"
       css={{
         "&::-webkit-scrollbar": {
           display: "none",
