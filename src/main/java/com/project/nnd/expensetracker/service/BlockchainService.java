@@ -1,7 +1,5 @@
 package com.project.nnd.expensetracker.service;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.springframework.stereotype.Service;
 
@@ -43,6 +41,52 @@ public class BlockchainService {
     // ✅ Blockchain fetch karna
     public List<Block> getBlockchain() {
         return blockchainRepository.findAll();
+    }
+
+    public List<Map<String, Object>> getCategorizedData() {
+        List<Block> blocks = blockchainRepository.findAll();
+        Map<String, Double> categoryAmounts = new HashMap<>();
+        Map<String, String> mappedCategories = Map.of(
+            "swiggy", "food",
+            "zomato", "food",
+            "uber", "travel",
+            "ola", "travel",
+            "myntra", "shopping",
+            "amazon", "shopping",
+            "flipkart", "shopping",
+            "netflix", "entertainment",
+            "hotstar", "entertainment",
+            "prime", "entertainment"
+        );
+    
+        for (Block block : blocks) {
+            Transaction transaction = block.getTransaction();
+            if (transaction == null) {
+                continue; // Skip if transaction is null
+            }
+            
+            String category = transaction.getCategory();
+            if (category == null) {
+                category = "misc"; // Handle null category
+            } else {
+                category = category.toLowerCase();
+            }
+            
+            double amount = transaction.getAmount();
+            String finalCategory = mappedCategories.getOrDefault(category, "misc");
+            
+            categoryAmounts.merge(finalCategory, amount, Double::sum);
+        }
+    
+        List<Map<String, Object>> jsonResponse = new ArrayList<>();
+        for (Map.Entry<String, Double> entry : categoryAmounts.entrySet()) {
+            jsonResponse.add(Map.of(
+                "category", entry.getKey(),
+                "amount", entry.getValue()
+            ));
+        }
+    
+        return jsonResponse;
     }
 
     // ✅ Blockchain validate karna

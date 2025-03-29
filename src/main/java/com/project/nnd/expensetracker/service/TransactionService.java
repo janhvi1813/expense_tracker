@@ -45,10 +45,10 @@ public class TransactionService {
     return 0.0;
     }
 
-    public String extractCategory(String message) {
-        Pattern categoryPattern = Pattern.compile("trf to ([A-Za-z\\s]+)\\b|towards ([A-Za-z\\s]+)\\b");
+    public static String extractCategory(String message) {
+        Pattern categoryPattern = Pattern.compile("trf to (\\S+)|towards (\\S+)");
         Matcher matcher = categoryPattern.matcher(message);
-    
+
         if (matcher.find()) {
             return matcher.group(1) != null ? matcher.group(1).trim() : matcher.group(2).trim();
         }
