@@ -4,10 +4,8 @@ const Hero = () => {
   return (
     <>
       <Flex justifyContent={"center"} maxH={"100vh"} maxW={"100%"}>
-        <Box>
-          <Text fontWeight={"bold"} fontSize={"4xl"} color={"teal.500"}>
-            ALL YOUR EXPENSES BELOW
-          </Text>
+        <Box  width="115" height="51">
+          <Text color="#F6F1DE" textStyle="4xl" fontWeight={"bold"}>Your financial trends, simplified!</Text>
         </Box>
       </Flex>
     </>

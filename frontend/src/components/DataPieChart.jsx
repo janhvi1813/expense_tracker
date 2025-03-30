@@ -85,7 +85,7 @@ const DataPieChart = () => {
             nameKey="category"
             cx="50%"
             cy="50%"
-            outerRadius={120}
+            outerRadius={170}
             fill="#8884d8"
             label={({ name, percent }) =>
               `${name.charAt(0).toUpperCase() + name.slice(1)}: ${(

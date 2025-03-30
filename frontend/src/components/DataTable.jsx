@@ -27,6 +27,7 @@ const DataTable = () => {
 
   return (
     <Box
+      bg="black"
       maxHeight="400px"
       overflowY="auto"
       width="100%"
