@@ -56,18 +56,20 @@ public class BlockchainService {
     public List<Map<String, Object>> getCategorizedData() {
         List<Block> blocks = blockchainRepository.findAll();
         Map<String, Double> categoryAmounts = new HashMap<>();
-        Map<String, String> mappedCategories = Map.of(
-            "swiggy", "food",
-            "zomato", "food",
-            "uber", "travel",
-            "ola", "travel",
-            "myntra", "shopping",
-            "amazon", "shopping",
-            "flipkart", "shopping",
-            "netflix", "entertainment",
-            "hotstar", "entertainment",
-            "prime", "entertainment"
-        );
+        Map<String, String> mappedCategories = Map.ofEntries(
+    Map.entry("swiggy", "food"),
+    Map.entry("zomato", "food"),
+    Map.entry("uber", "travel"),
+    Map.entry("ola", "travel"),
+    Map.entry("myntra", "shopping"),
+    Map.entry("amazon", "shopping"),
+    Map.entry("flipkart", "shopping"),
+    Map.entry("meesho", "shopping"),
+    Map.entry("netflix", "entertainment"),
+    Map.entry("hotstar", "entertainment"),
+    Map.entry("prime", "entertainment")
+);
+
     
         for (Block block : blocks) {
             Transaction transaction = block.getTransaction();

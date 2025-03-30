@@ -19,6 +19,7 @@ const DataTable = () => {
     myntra: "shopping",
     amazon: "shopping",
     flipkart: "shopping",
+    meesho: "shopping",
     netflix: "entertainment",
     hotstar: "entertainment",
     prime: "entertainment",
