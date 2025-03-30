@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ValidateButton = () => {
-  const [isValidated, setIsValidated] = useState(false); // State to track validation status
+  const [isValidated, setIsValidated] = useState(false); 
 
   const handleValidation = async () => {
     try {
@@ -12,7 +12,7 @@ const ValidateButton = () => {
       const data = await response.json();
 
       if (data === true) {
-        setIsValidated(true); // Update state to show the box
+        setIsValidated(true); 
         toast.success("✅ Transaction is valid!");
       } else {
         setIsValidated(false);

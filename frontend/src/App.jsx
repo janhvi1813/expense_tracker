@@ -10,10 +10,10 @@ import AiReport from "./components/AiReport";
 const App = () => {
   return (
     <>
-    <Box bg="#3E3F5B" minH="100vh" p={4}>
+    <Box  minH="100vh" p={4}>
       <Hero />
 
-        <Box bg="#3E3F5B">
+        <Box>
         <HStack>
         <Progressbar/>
         <ValidateButton/>
@@ -24,14 +24,15 @@ const App = () => {
         justifyContent={"center"}
         width={"100%"}
         spacing={4}
-        minH={"80vh"}
+        minH={"100vh"}
         alignItems={"center"}
       >
         <DataPieChart />
         <DataTable />
         </HStack>
+        <AiReport />
         </Box>
-      <AiReport />
+      
 
     </>
   );
