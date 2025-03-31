@@ -26,10 +26,16 @@ public class GeminiService {
             String jsonData = objectMapper.writeValueAsString(expenseData);
 
             // ✅ Improved Prompt
-            String prompt = "Generate a simple and concise expense summarry my spending." +
-                            " Mention where I spent how much, suggest areas where I can save money," +
-                            " and include a fun fact about daily budgeting. The report should be in plain text format." +
-                            " Ensure all amounts are in Indian Rupees (₹). Here are my expenses: " + jsonData;
+            String prompt = "Generate a concise expense summary of my spending in clear bullet points." +
+                " Each bullet point should be structured as follows:" +
+                " - Category: (e.g., Food, Transport, Shopping)" +
+                " - Amount Spent: ₹XXX" +
+                " - Key Insight: (e.g., 'You spent 20% more on dining this month.')" +
+                " - Savings Tip: (e.g., 'Consider meal prepping to save on food costs.')" +
+                " Additionally, end with a fun fact about daily budgeting." +
+                " Ensure all amounts are in Indian Rupees (₹). Here are my expenses: " +
+                jsonData;
+
 
             // Prepare request payload
             Map<String, Object> requestBody = Map.of(
