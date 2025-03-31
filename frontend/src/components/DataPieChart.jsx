@@ -13,6 +13,7 @@ const DataPieChart = () => {
   const [categorizedData, setCategorizedData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [endAngle, setEndAngle] = useState(-90); // Start from a single line
 
   const COLORS = [
     "#FF6384",
@@ -37,6 +38,7 @@ const DataPieChart = () => {
 
         const data = await response.json();
         setCategorizedData(data);
+        setTimeout(() => setEndAngle(270), 300); // Animate from line to full circle
       } catch (err) {
         setError(err.message);
       } finally {
@@ -73,9 +75,9 @@ const DataPieChart = () => {
       alignItems="center"
       width="100%"
       height="100%"
-      mt={6} // Added margin-top
-      mb={6} // Added margin-bottom
-      p={4} // Added padding
+      mt={6}
+      mb={6}
+      p={4}
     >
       <ResponsiveContainer width="100%" height={400}>
         <PieChart>
@@ -85,6 +87,8 @@ const DataPieChart = () => {
             nameKey="category"
             cx="50%"
             cy="50%"
+            startAngle={-90}
+            endAngle={endAngle} // Animate drawing effect
             outerRadius={120}
             fill="#8884d8"
             label={({ name, percent }) =>
