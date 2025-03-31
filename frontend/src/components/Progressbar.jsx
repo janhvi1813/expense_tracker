@@ -32,7 +32,7 @@ const Progressbar = () => {
         alignItems="center"
         mt={50}
         mb={-150}
-        bg="#F6F1DE"
+        bg="white"
       >
         <Text fontSize="2xl" fontWeight="bold" mb={4} color="#14B8A6">
           Expense Tracker

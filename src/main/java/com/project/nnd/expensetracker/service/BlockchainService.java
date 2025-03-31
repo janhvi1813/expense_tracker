@@ -101,18 +101,13 @@ public class BlockchainService {
         return jsonResponse;
     }
 
-    // ✅ Blockchain validate karna
     public boolean validateBlockchain() {
         for (int i = 1; i < blockchain.size(); i++) {
             Block currentBlock = blockchain.get(i);
             Block prevBlock = blockchain.get(i - 1);
-
-            // 🔥 Check previous hash consistency
             if (!currentBlock.getPreviousHash().equals(prevBlock.getHash())) {
                 return false;
             }
-
-            // 🔥 Check if hash is valid
             if (!currentBlock.getHash().equals(currentBlock.calculateHash())) {
                 return false;
             }
