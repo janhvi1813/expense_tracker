@@ -102,6 +102,7 @@ public class BlockchainService {
     }
 
     public boolean validateBlockchain() {
+        List<Block> blockchain=blockchainRepository.findAll();
         for (int i = 1; i < blockchain.size(); i++) {
             Block currentBlock = blockchain.get(i);
             Block prevBlock = blockchain.get(i - 1);
