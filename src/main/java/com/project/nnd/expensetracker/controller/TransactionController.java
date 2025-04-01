@@ -18,19 +18,19 @@ public class TransactionController {
 
     private final TransactionService transactionService;
 
-    // Constructor Injection
+    
     public TransactionController(TransactionService transactionService) {
         this.transactionService = transactionService;
     }
 
-    // Add a new transaction
+   
     @PostMapping("/add")
     public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction) {
         Transaction savedTransaction = transactionService.saveTransaction(transaction);
         return ResponseEntity.ok(savedTransaction);
     }
 
-    // Fetch all transactions
+   
     @GetMapping
     public ResponseEntity<List<Transaction>> getAllTransactions() {
         List<Transaction> transactions = transactionService.getAllTransactions();

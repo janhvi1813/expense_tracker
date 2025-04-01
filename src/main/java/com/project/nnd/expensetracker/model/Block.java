@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "blocks") // ✅ Store in "blocks" collection
+@Document(collection = "blocks") 
 public class Block {
     
-    @Id  // ✅ MongoDB ke liye unique identifier
+    @Id  
     private String id;
     
     private int index;
@@ -19,7 +19,7 @@ public class Block {
     private String previousHash;
     private String hash;
 
-    // ✅ Constructor to create a new block
+    
     public Block(int index, Transaction transaction, String previousHash) {
         this.index = index;
         this.timestamp = LocalDateTime.now().toString();
@@ -28,7 +28,7 @@ public class Block {
         this.hash = calculateHash();
     }
 
-    // ✅ Hash calculation function
+    
     public String calculateHash() {
         String dataToHash = index + timestamp + transaction.toString() + previousHash;
         return applySHA256(dataToHash);
@@ -50,7 +50,7 @@ public class Block {
         }
     }
 
-    // ✅ Getters and Setters
+   
     public String getId() {
         return id;
     }

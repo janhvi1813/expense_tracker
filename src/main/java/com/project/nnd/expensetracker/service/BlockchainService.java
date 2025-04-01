@@ -19,21 +19,21 @@ public class BlockchainService {
         this.blockchainRepository = blockchainRepository;
         this.blockchain = new ArrayList<>();
         
-        // ✅ MongoDB se existing blockchain load karna
+    
         List<Block> existingBlocks = blockchainRepository.findAll();
         if (!existingBlocks.isEmpty()) {
             this.blockchain = existingBlocks;
         }
     }
 
-    // ✅ Ek transaction ko accept karke ek block create karega aur MongoDB me save karega
+    
     public Block addBlock(Transaction transaction) {
         String prevHash = blockchain.isEmpty() ? "0" : blockchain.get(blockchain.size() - 1).getHash();
-        int index = blockchain.size(); // ✅ Correct index
-        Block newBlock = new Block(index, transaction, prevHash); // ✅ Block creation
-        // ✅ Add to blockchain list
+        int index = blockchain.size(); 
+        Block newBlock = new Block(index, transaction, prevHash); 
+       
         blockchain.add(newBlock);
-        // ✅ Save in MongoDB
+       
         blockchainRepository.save(newBlock);
         return newBlock;
     }
@@ -74,12 +74,12 @@ public class BlockchainService {
         for (Block block : blocks) {
             Transaction transaction = block.getTransaction();
             if (transaction == null) {
-                continue; // Skip if transaction is null
+                continue; 
             }
             
             String category = transaction.getCategory();
             if (category == null) {
-                category = "misc"; // Handle null category
+                category = "misc"; 
             } else {
                 category = category.toLowerCase();
             }

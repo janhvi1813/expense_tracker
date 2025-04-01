@@ -88,7 +88,7 @@ const DataPieChart = () => {
             cx="50%"
             cy="50%"
             startAngle={-90}
-            endAngle={endAngle} // Animate drawing effect
+            endAngle={endAngle} 
             outerRadius={120}
             fill="#8884d8"
             label={({ name, percent }) =>

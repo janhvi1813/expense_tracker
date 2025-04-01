@@ -31,17 +31,17 @@ const DataTable = () => {
       maxHeight="400px"
       overflowY="auto"
       width="100%"
-      mt={6} // Added margin-top
-      mb={6} // Added margin-bottom
-      p={4} // Added padding
+      mt={6}
+      mb={6} 
+      p={4}
       borderRadius="lg"
       boxShadow="md"
       css={{
         "&::-webkit-scrollbar": {
           display: "none",
         },
-        "-ms-overflow-style": "none", // For Internet Explorer and Edge
-        "scrollbar-width": "none", // For Firefox
+        "-ms-overflow-style": "none",
+        "scrollbar-width": "none", 
       }}
     >
       <Table.Root size="lg" variant="outline" maxW="100%">

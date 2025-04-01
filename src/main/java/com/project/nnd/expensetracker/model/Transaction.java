@@ -11,16 +11,14 @@ public class Transaction {
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime timestamp;
 
-    // Default constructor (required for MongoDB)
+    
     public Transaction() {}
 
-    // Constructor
+  
     public Transaction(double amount, String category) {
         this.amount = amount;
         this.category = category;
     }
-
-    // Getters and Setters
     public double getAmount() {
         return amount;
     }
