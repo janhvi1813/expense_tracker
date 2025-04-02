@@ -46,7 +46,7 @@ const AiReport = () => {
         flexDirection={"column"}
         spaceY={"4"} // Keeping the spacing as you had it
       >
-        <Text fontSize={"3xl"} fontWeight={"bold"} fontFamily={"heading"}>
+        <Text fontSize={"3xl"} fontWeight={"bold"} fontFamily={"heading"} color="#F6F1DE">
           AI-Generated Expense Summary
         </Text>
         <Button

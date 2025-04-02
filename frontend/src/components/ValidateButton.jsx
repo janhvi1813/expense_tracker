@@ -33,7 +33,7 @@ const ValidateButton = () => {
         mt={50}
         mb={-150}
       >
-        <Box bg="#F6F1DE" w="100%" p="4" color="white" minH="17vh">
+        <Box bg="#F6F1DE" w="100%" p="4" color="white" minH="17vh" rounded={12}>
           <Text color="black" textStyle="3xl" fontWeight={"medium"}>
             Validate your transactions
           </Text>

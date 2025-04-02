@@ -10,7 +10,6 @@ public class Blockchain {
         chain = new ArrayList<>();
         chain.add(new Block(0, new Transaction(0.0, "Genesis"), "0"));
     }
-
     
     public void addBlock(Transaction transaction) {
         int newIndex = chain.size();
